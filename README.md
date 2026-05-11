@@ -17,35 +17,38 @@ Susie Paw 是一个 Codex 自定义桌宠包：粉色电气猫猫风格，适合
 ```text
 请帮我安装这个 Codex 自定义桌宠。
 
-仓库：https://github.com/kkzhan201/susie_paw
+仓库：当前 GitHub 仓库 `susie_paw`
 宠物 ID：susie-paw
 安装目录：${CODEX_HOME:-$HOME/.codex}/pets/susie-paw
 
 请执行：
 1. 创建安装目录。
-2. 从 GitHub raw 链接下载 pet.json 和 spritesheet.webp。
+2. 从当前仓库根目录下载 pet.json 和 spritesheet.webp。
 3. 不要修改或删除其他已有宠物。
 4. 下载后确认这两个文件都存在。
-5. 告诉我安装完成，并提醒我重启 Codex 或重新打开宠物选择面板。
+5. 不要在回复里打印 GitHub 用户名。
+6. 告诉我安装完成，并提醒我重启 Codex 或重新打开宠物选择面板。
 
 可用命令：
 
 PET_HOME="${CODEX_HOME:-$HOME/.codex}/pets/susie-paw"
+REPO_RAW_BASE="https://raw.githubusercontent.com/<owner>/susie_paw/main"
 mkdir -p "$PET_HOME"
-curl -fL "https://raw.githubusercontent.com/kkzhan201/susie_paw/main/pet.json" -o "$PET_HOME/pet.json"
-curl -fL "https://raw.githubusercontent.com/kkzhan201/susie_paw/main/spritesheet.webp" -o "$PET_HOME/spritesheet.webp"
+curl -fL "$REPO_RAW_BASE/pet.json" -o "$PET_HOME/pet.json"
+curl -fL "$REPO_RAW_BASE/spritesheet.webp" -o "$PET_HOME/spritesheet.webp"
 test -f "$PET_HOME/pet.json" && test -f "$PET_HOME/spritesheet.webp"
 ```
 
 ### 一键安装
 
-在 macOS / Linux 终端执行：
+把 `<owner>` 替换成仓库所属账号后，在 macOS / Linux 终端执行：
 
 ```bash
 PET_HOME="${CODEX_HOME:-$HOME/.codex}/pets/susie-paw"
+REPO_RAW_BASE="https://raw.githubusercontent.com/<owner>/susie_paw/main"
 mkdir -p "$PET_HOME"
-curl -L "https://raw.githubusercontent.com/kkzhan201/susie_paw/main/pet.json" -o "$PET_HOME/pet.json"
-curl -L "https://raw.githubusercontent.com/kkzhan201/susie_paw/main/spritesheet.webp" -o "$PET_HOME/spritesheet.webp"
+curl -fL "$REPO_RAW_BASE/pet.json" -o "$PET_HOME/pet.json"
+curl -fL "$REPO_RAW_BASE/spritesheet.webp" -o "$PET_HOME/spritesheet.webp"
 ```
 
 然后重启 Codex，或重新打开宠物选择/设置面板。
