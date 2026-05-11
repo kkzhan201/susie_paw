@@ -10,6 +10,33 @@ Susie Paw 是一个 Codex 自定义桌宠包：粉色电气猫猫风格，适合
 
 ## 安装
 
+### 给 Codex / Agent 的安装版本
+
+如果你正在用 Codex、Claude Code 或其他 coding agent，可以直接把下面整段发给它：
+
+```text
+请帮我安装这个 Codex 自定义桌宠。
+
+仓库：https://github.com/kkzhan201/susie_paw
+宠物 ID：susie-paw
+安装目录：${CODEX_HOME:-$HOME/.codex}/pets/susie-paw
+
+请执行：
+1. 创建安装目录。
+2. 从 GitHub raw 链接下载 pet.json 和 spritesheet.webp。
+3. 不要修改或删除其他已有宠物。
+4. 下载后确认这两个文件都存在。
+5. 告诉我安装完成，并提醒我重启 Codex 或重新打开宠物选择面板。
+
+可用命令：
+
+PET_HOME="${CODEX_HOME:-$HOME/.codex}/pets/susie-paw"
+mkdir -p "$PET_HOME"
+curl -fL "https://raw.githubusercontent.com/kkzhan201/susie_paw/main/pet.json" -o "$PET_HOME/pet.json"
+curl -fL "https://raw.githubusercontent.com/kkzhan201/susie_paw/main/spritesheet.webp" -o "$PET_HOME/spritesheet.webp"
+test -f "$PET_HOME/pet.json" && test -f "$PET_HOME/spritesheet.webp"
+```
+
 ### 一键安装
 
 在 macOS / Linux 终端执行：
