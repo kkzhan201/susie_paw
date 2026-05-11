@@ -8,6 +8,8 @@ Susie Paw 是一个 Codex 自定义桌宠包：粉色电气猫猫风格，适合
 
 ![Susie Paw animation contact sheet](preview/contact-sheet.png)
 
+Failed 状态视频预览：[preview/failed.mp4](preview/failed.mp4)
+
 ## 安装
 
 ### 给 Codex / Agent 的安装版本
