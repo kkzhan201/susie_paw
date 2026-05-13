@@ -1,31 +1,33 @@
-# Susie Paw
+# Codex Pet Library
 
-Susie Paw 是一个 Codex 自定义桌宠包：粉色电气猫猫风格，适合在 Codex 里作为轻量、可爱的工作状态陪伴。
+一个 Codex 自定义桌宠库，收集角色宠物化的 fan-made 宠物包。每个宠物都按 Codex custom pet 格式提供 `pet.json` 和 `spritesheet.webp`，可以单独安装。
 
-> 非官方 fan-made 宠物包。该项目不隶属于、也不代表任何游戏或其权利方。
+> 非官方 fan-made 项目。本仓库不隶属于、也不代表任何游戏、发行方或权利方。
 
-## 预览
+## Pets
 
-![Susie Paw animation contact sheet](preview/contact-sheet.png)
+| Pet | Status | Preview | Path |
+| --- | --- | --- | --- |
+| Susie Paw | Ready | ![Susie Paw](pets/susie-paw/preview/contact-sheet.png) | `pets/susie-paw` |
+| W Paw | Ready | ![W Paw](pets/w-paw/preview/contact-sheet.png) | `pets/w-paw` |
 
-Failed 状态视频预览：[preview/failed.mp4](preview/failed.mp4)
+## 给 Codex / Agent 的安装版本
 
-## 安装
-
-### 给 Codex / Agent 的安装版本
-
-如果你正在用 Codex、Claude Code 或其他 coding agent，可以直接把下面整段发给它：
+把下面整段发给 Codex、Claude Code 或其他 coding agent。将 `<owner>` 替换成仓库所属账号，`<pet-id>` 替换成要安装的宠物目录名，例如 `susie-paw`。
 
 ```text
-请帮我安装这个 Codex 自定义桌宠。
+请帮我从当前 Codex 宠物库安装一个自定义桌宠。
 
 仓库：当前 GitHub 仓库 `susie_paw`
-宠物 ID：susie-paw
-安装目录：${CODEX_HOME:-$HOME/.codex}/pets/susie-paw
+宠物 ID：<pet-id>
+源文件：
+- pets/<pet-id>/pet.json
+- pets/<pet-id>/spritesheet.webp
+安装目录：${CODEX_HOME:-$HOME/.codex}/pets/<pet-id>
 
 请执行：
 1. 创建安装目录。
-2. 从当前仓库根目录下载 pet.json 和 spritesheet.webp。
+2. 从当前仓库的 pets/<pet-id>/ 下载 pet.json 和 spritesheet.webp。
 3. 不要修改或删除其他已有宠物。
 4. 下载后确认这两个文件都存在。
 5. 不要在回复里打印 GitHub 用户名。
@@ -33,66 +35,41 @@ Failed 状态视频预览：[preview/failed.mp4](preview/failed.mp4)
 
 可用命令：
 
-PET_HOME="${CODEX_HOME:-$HOME/.codex}/pets/susie-paw"
+PET_ID="<pet-id>"
+PET_HOME="${CODEX_HOME:-$HOME/.codex}/pets/$PET_ID"
 REPO_RAW_BASE="https://raw.githubusercontent.com/<owner>/susie_paw/main"
 mkdir -p "$PET_HOME"
-curl -fL "$REPO_RAW_BASE/pet.json" -o "$PET_HOME/pet.json"
-curl -fL "$REPO_RAW_BASE/spritesheet.webp" -o "$PET_HOME/spritesheet.webp"
+curl -fL "$REPO_RAW_BASE/pets/$PET_ID/pet.json" -o "$PET_HOME/pet.json"
+curl -fL "$REPO_RAW_BASE/pets/$PET_ID/spritesheet.webp" -o "$PET_HOME/spritesheet.webp"
 test -f "$PET_HOME/pet.json" && test -f "$PET_HOME/spritesheet.webp"
 ```
 
-### 一键安装
+## 手动安装
 
-把 `<owner>` 替换成仓库所属账号后，在 macOS / Linux 终端执行：
+以 `susie-paw` 为例：
 
 ```bash
-PET_HOME="${CODEX_HOME:-$HOME/.codex}/pets/susie-paw"
+PET_ID="susie-paw"
+PET_HOME="${CODEX_HOME:-$HOME/.codex}/pets/$PET_ID"
 REPO_RAW_BASE="https://raw.githubusercontent.com/<owner>/susie_paw/main"
 mkdir -p "$PET_HOME"
-curl -fL "$REPO_RAW_BASE/pet.json" -o "$PET_HOME/pet.json"
-curl -fL "$REPO_RAW_BASE/spritesheet.webp" -o "$PET_HOME/spritesheet.webp"
+curl -fL "$REPO_RAW_BASE/pets/$PET_ID/pet.json" -o "$PET_HOME/pet.json"
+curl -fL "$REPO_RAW_BASE/pets/$PET_ID/spritesheet.webp" -o "$PET_HOME/spritesheet.webp"
 ```
 
 然后重启 Codex，或重新打开宠物选择/设置面板。
 
-### 手动安装
-
-1. 下载本仓库的 `pet.json` 和 `spritesheet.webp`。
-2. 新建目录：
-
-```bash
-mkdir -p "${CODEX_HOME:-$HOME/.codex}/pets/susie-paw"
-```
-
-3. 把两个文件放进去：
-
-```text
-${CODEX_HOME:-$HOME/.codex}/pets/susie-paw/
-├── pet.json
-└── spritesheet.webp
-```
-
-4. 重启 Codex。
-
 ## Codex Pet 格式
 
-本仓库按 Codex custom pet 约定组织：
+每个宠物目录都保持同样结构：
 
 ```text
-pet.json
-spritesheet.webp
-preview/contact-sheet.png
-```
-
-`pet.json`：
-
-```json
-{
-  "id": "susie-paw",
-  "displayName": "Susie Paw",
-  "description": "A tiny pink electric cat Codex pet with soft chibi energy.",
-  "spritesheetPath": "spritesheet.webp"
-}
+pets/<pet-id>/
+├── README.md
+├── pet.json
+├── spritesheet.webp
+└── preview/
+    └── contact-sheet.png
 ```
 
 `spritesheet.webp` 使用固定 atlas：
@@ -122,9 +99,9 @@ preview/contact-sheet.png
 ## 卸载
 
 ```bash
-rm -rf "${CODEX_HOME:-$HOME/.codex}/pets/susie-paw"
+rm -rf "${CODEX_HOME:-$HOME/.codex}/pets/<pet-id>"
 ```
 
-## 许可
+## 许可和使用
 
-README 和元数据可按 MIT 使用。`spritesheet.webp` 与 `preview/` 下的图片资产仅建议用于个人、学习和非商业用途；如需商业使用，请替换为你拥有完整权利的原创资产。
+README、脚本和元数据可按 MIT 使用。宠物 spritesheet 与预览图片是 fan-made 图片资产，仅建议用于个人、学习和非商业用途。详见 [FAN_CONTENT_NOTICE.md](FAN_CONTENT_NOTICE.md)。

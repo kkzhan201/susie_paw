@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "pets": [
+    {
+      "id": "susie-paw",
+      "displayName": "Susie Paw",
+      "description": "A tiny pink electric cat Codex pet with soft chibi energy.",
+      "path": "pets/susie-paw",
+      "manifest": "pets/susie-paw/pet.json",
+      "spritesheet": "pets/susie-paw/spritesheet.webp",
+      "preview": "pets/susie-paw/preview/contact-sheet.png",
+      "status": "ready",
+      "tags": ["pink", "electric", "cat", "chibi"]
+    },
+    {
+      "id": "w-paw",
+      "displayName": "W Paw",
+      "description": "A tiny grey-haired red-and-black mischievous chibi Codex pet.",
+      "path": "pets/w-paw",
+      "manifest": "pets/w-paw/pet.json",
+      "spritesheet": "pets/w-paw/spritesheet.webp",
+      "preview": "pets/w-paw/preview/contact-sheet.png",
+      "status": "ready",
+      "tags": ["grey-hair", "red-black", "mischievous", "chibi"]
+    }
+  ]
+}
