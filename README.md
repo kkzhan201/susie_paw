@@ -4,6 +4,24 @@
 
 > 非官方 fan-made 项目。本仓库不隶属于、也不代表任何游戏、发行方或权利方。
 
+## 资产管线
+
+这个仓库不仅保存已完成的宠物资产，也保存一套可重复执行的“立绘/参考图到 Codex 桌宠”的生产规则。
+
+- [artstyle.md](artstyle.md)：定义 Terra Pet Zoo 的统一宠物化美术风格。
+- [artrule.md](artrule.md)：定义 spritesheet、目录结构、生成流程和 QA 标准。
+- [角色清单.md](角色清单.md)：唯一生产清单和回写入口，记录角色状态、身份锚点、生成路径和 QA 结果。
+
+生产流程约定：
+
+1. 主线程从 [角色清单.md](角色清单.md) 选择待生产角色。
+2. 子代理读取 `artstyle.md`、`artrule.md`、`characters/<id>/profile.md` 和本地私有参考图。
+3. 子代理只输出到 `runs/<pet-id>/`，不直接修改 `pets/`、`catalog.json` 或 `角色清单.md`。
+4. 主线程统一 QA；通过后再复制到 `pets/<pet-id>/`。
+5. 主线程更新 `catalog.json`、宠物 README 和 [角色清单.md](角色清单.md)。
+
+官方立绘或参考截图不建议提交到开源仓库。`characters/<id>/refs/` 仅作为本地私有参考图目录，已被 `.gitignore` 忽略。
+
 ## Pets
 
 | Pet | Status | Preview | Path |

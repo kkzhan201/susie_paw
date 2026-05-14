@@ -1,2 +1,12 @@
 .DS_Store
 Thumbs.db
+
+# Private reference images. Keep official/reference artwork local only.
+characters/*/refs/*
+!characters/*/refs/.gitignore
+
+# Local generation runs and scratch QA exports.
+runs/*
+!runs/.gitignore
+qa/batch-previews/*
+!qa/batch-previews/.gitignore
